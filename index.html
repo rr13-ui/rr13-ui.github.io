@@ -11,6 +11,10 @@
         .bar {
             fill: steelblue;
         }
+        .bar:hover {
+		  fill: orangered ;
+		}
+
         /* Add a black background color to the top navigation */
 		.topnav {
 		  background-color: #333;
@@ -115,9 +119,8 @@ var tooltip = d3.select("body").append("div").attr("class", "toolTip");
 				              	.attr("fill", "red");
 				          })
 				  .on("mouseout", function(d, i) {
-				              d3.select(this).attr("fill", function() {
-				                  return "" + color(this.id) + "";
-				              });
+				              d3.select(this)
+				              	.attr("fill", "blue");
 				          })
 				  .on("mousemove", function(d){
 				              tooltip
