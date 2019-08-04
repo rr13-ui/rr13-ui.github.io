@@ -11,10 +11,54 @@
         .bar {
             fill: steelblue;
         }
+        .bar:hover {
+		  fill: orangered ;
+		}
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
         /* Add a black background color to the top navigation */
 		.topnav {
 		  background-color: #333;
 		  overflow: hidden;
+		}
+
+		.toolTip {
+		  position: absolute;
+		  display: none;
+		  min-width: 80px;
+		  height: auto;
+		  background: none repeat scroll 0 0 #ffffff;
+		  border: 1px solid #6F257F;
+		  padding: 14px;
+		  text-align: center;
 		}
 
 		/* Style the links inside the navigation bar */
@@ -56,6 +100,21 @@
 <svg width="600" height="500"></svg>
 <script>
 
+var colours = d3.scaleOrdinal()
+    .range(["#6F257F", "#CA0D59"]);
+
+var tip = d3.tip()
+  .attr('class', 'd3-tip')
+  .offset([0, 5])
+  .html(function(d) {
+    return "<strong>Life Exp:</strong> <span style='color:red'>" + d.le_agg + "</span>";
+  })
+
+
+
+var color = d3.scaleOrdinal(d3.schemeCategory10);
+
+
     var svg = d3.select("svg"),
         margin = 200,
         width = svg.attr("width") - margin,
@@ -70,6 +129,7 @@
 
     d3.csv("/data/lifeexp.csv").then( function(data) {
 
+	svg.call(tip);
 
         xScale.domain(data.map(function(d) { return d.pctile; }));
         yScale.domain([0, d3.max(data, function(d) { return d.le_agg; })]);
@@ -83,6 +143,7 @@
              return  d;
          }).ticks(10));
 
+var tooltip = d3.select("body").append("div").attr("class", "toolTip");
 
           g.selectAll(".bar")
 		          .data(data)
@@ -91,28 +152,40 @@
 		          .attr("x", function(d) { return xScale(d.pctile); })
 		          .attr("y", function(d) { return yScale(d.le_agg); })
 		          .attr("width", xScale.bandwidth())
-		          .attr("height", function(d) { return height - yScale(d.le_agg); });
+		          .attr("height", function(d) { return height - yScale(d.le_agg); })
+		          .on('mouseover', tip.show)
+      			  .on('mouseout', tip.hide);
+
+
 
 
 		svg.append("text")
 		    .attr("class", "x label")
 		    .attr("text-anchor", "end")
 		    .attr("x", width)
-		    .attr("y", height +50)
+		    .attr("y", height +130)
     .text("income per cent");
 
     svg.append("text")
 	    .attr("class", "y label")
 	    .attr("text-anchor", "end")
-	    .attr("y", 20)
+	    .attr("x", -140)
+	    .attr("y", (height/2) -90 )
 	    .attr("transform", "rotate(-90)")
     .text("life expectancy");
 
+svg.selectAll(".bar")
+.on('mouseover', tip.show)
+.on('mouseout', tip.hide);
 
 
 }).catch(e => {
     console.log(e);
 });
 </script>
+<div align="left">
+<b>As you can see Females have a higher life expectenacy than males.Also as the income grows , Life Expectenancy  also increases.</b>
 </div>
+</div>
+
 </body>

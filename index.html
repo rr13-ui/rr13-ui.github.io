@@ -127,7 +127,7 @@ var color = d3.scaleOrdinal(d3.schemeCategory10);
     var g = svg.append("g")
                .attr("transform", "translate(" + 100 + "," + 100 + ")");
 
-    d3.csv("/data/lifeexpm.csv").then( function(data) {
+    d3.csv("/data/lifeexp.csv").then( function(data) {
 
 	svg.call(tip);
 
