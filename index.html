@@ -91,7 +91,25 @@
 		          .attr("x", function(d) { return xScale(d.pctile); })
 		          .attr("y", function(d) { return yScale(d.le_agg); })
 		          .attr("width", xScale.bandwidth())
-		          .attr("height", function(d) { return height - yScale(d.le_agg); });
+		          .attr("height", function(d) { return height - yScale(d.le_agg); })
+		          .on("mouseover", function() {
+				              d3.select(this)
+				              	.attr("fill", "red");
+				          })
+				  .on("mouseout", function(d, i) {
+				              d3.select(this).attr("fill", function() {
+				                  return "" + color(this.id) + "";
+				              });
+				          })
+				  .on("mousemove", function(d){
+				              tooltip
+				                .style("left", d3.event.pageX - 50 + "px")
+				                .style("top", d3.event.pageY - 70 + "px")
+				                .style("display", "inline-block")
+				                .html((d.area) + "<br>" + "Avg Life Exp. Rate " + (d.le_agg));
+				          });
+
+
 
 
 		svg.append("text")
@@ -109,28 +127,6 @@
 	    .attr("transform", "rotate(-90)")
     .text("life expectancy");
 
-var bars = svg.selectAll(".bar")
-        .data(data)
-        .enter()
-        .append("rect")
-        .attr("class", "bar");
-
- bars.on("mouseover", function() {
-            d3.select(this)
-            	.attr("fill", "red");
-        })
-        .on("mouseout", function(d, i) {
-            d3.select(this).attr("fill", function() {
-                return "" + color(this.id) + "";
-            });
-        })
-        .on("mousemove", function(d){
-            tooltip
-              .style("left", d3.event.pageX - 50 + "px")
-              .style("top", d3.event.pageY - 70 + "px")
-              .style("display", "inline-block")
-              .html((d.area) + "<br>" + "Avg Life Exp. Rate " + (d.le_agg));
-        });
 
 
 }).catch(e => {
