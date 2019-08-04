@@ -129,12 +129,9 @@ d3.tsv("/data/world_population.tsv").then( function(d) {
 d3.json("/data/world_countries.json").then( function(d) {
 	console.log('test');
     console.log(d);
-    data1 = d;
+    data = d;
 });
 
-data = data1.filter(function (el) {
-  return el != null;
-});
 
 
 
@@ -143,7 +140,7 @@ data = data1.filter(function (el) {
   alert(data);
   alert(population);
   population.forEach(function(d) { populationById[d.id] = +d.population; });
-  data.features.forEach(function(d) { d.population = populationById[d.id] });
+  data.features.forEach(function(d) { if (d != nulll){ d.population = populationById[d.id]} });
 
   svg.append("g")
       .attr("class", "countries")
