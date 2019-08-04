@@ -172,6 +172,9 @@ var tooltip = d3.select("body").append("div").attr("class", "toolTip");
 	    .attr("transform", "rotate(-90)")
     .text("life expectancy");
 
+svg.selectAll(".bar")
+.on('mouseover', tip.show)
+.on('mouseout', tip.hide);
 
 
 }).catch(e => {
