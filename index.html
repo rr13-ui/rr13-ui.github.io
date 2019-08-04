@@ -111,6 +111,7 @@ var tip = d3.tip()
   })
 
 
+
 var color = d3.scaleOrdinal(d3.schemeCategory10);
 
 
@@ -128,6 +129,7 @@ var color = d3.scaleOrdinal(d3.schemeCategory10);
 
     d3.csv("/data/lifeexpm.csv").then( function(data) {
 
+	svg.call(tip);
 
         xScale.domain(data.map(function(d) { return d.pctile; }));
         yScale.domain([0, d3.max(data, function(d) { return d.le_agg; })]);
