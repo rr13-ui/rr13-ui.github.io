@@ -128,9 +128,12 @@ d3.tsv("/data/world_population.tsv").then( function(d) {
 d3.json("/data/world_countries.json").then( function(d) {
 	console.log('test');
     console.log(d);
-    data = d;
+    data1 = d;
 });
 
+data = data1.filter(function (el) {
+  return el != null;
+});
 
 
 
