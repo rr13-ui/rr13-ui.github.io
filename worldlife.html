@@ -1,4 +1,11 @@
 <body>
+<head>
+<style>
+        .bar {
+            fill: steelblue;
+        }
+    </style>
+</head>
 <script src="https://d3js.org/d3.v5.min.js"></script>
 <script src="https://d3js.org/queue.v1.min.js"></script>
 <script src="https://d3js.org/topojson.v1.min.js"></script>
@@ -32,12 +39,19 @@
         g.append("g")
          .call(d3.axisLeft(yScale).tickFormat(function(d){
              return "$" + d;
-         }).ticks(10))
-         .append("text")
-         .attr("y", 6)
-         .attr("dy", "0.71em")
-         .attr("text-anchor", "end")
-         .text("value");
+         }).ticks(10));
+
+
+          g.selectAll(".bar")
+		          .data(data)
+		          .enter().append("rect")
+		          .attr("class", "bar")
+		          .attr("x", function(d) { return xScale(d.pctile); })
+		          .attr("y", function(d) { return yScale(d.le_agg); })
+		          .attr("width", xScale.bandwidth())
+		          .attr("height", function(d) { return height - yScale(d.value); });
+
+
 }).catch(e => {
     console.log(e);
 });
