@@ -119,14 +119,14 @@ svg.call(tip);
 
 var data1 = [];
 d3.tsv("/data/world_population.tsv").then( function(d) {
-    data1 = d
+    data = d
 });
 
-var json1 = [];
+var population = [];
 d3.json("/data/world_countries.json").then( function(d) {
 	console.log('test');
     console.log(d);
-    json1 = d;
+    population = d;
 });
 
 
