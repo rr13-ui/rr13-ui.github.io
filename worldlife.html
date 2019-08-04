@@ -33,7 +33,7 @@
         yScale.domain([0, d3.max(data, function(d) { return d.le_agg; })]);
 
         g.append("g")
-         .attr("transform", "translate(100," + height + ")")
+         .attr("transform", "translate(100," + 100 + height + ")")
          .call(d3.axisBottom(xScale));
 
         g.append("g")
