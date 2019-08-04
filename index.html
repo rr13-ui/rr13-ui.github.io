@@ -67,6 +67,9 @@
 <svg width="600" height="500"></svg>
 <script>
 
+var colours = d3.scaleOrdinal()
+    .range(["#6F257F", "#CA0D59"]);
+
     var svg = d3.select("svg"),
         margin = 200,
         width = svg.attr("width") - margin,
