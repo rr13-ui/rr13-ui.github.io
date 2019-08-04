@@ -17,6 +17,17 @@
 		  overflow: hidden;
 		}
 
+		.toolTip {
+		  position: absolute;
+		  display: none;
+		  min-width: 80px;
+		  height: auto;
+		  background: none repeat scroll 0 0 #ffffff;
+		  border: 1px solid #6F257F;
+		  padding: 14px;
+		  text-align: center;
+		}
+
 		/* Style the links inside the navigation bar */
 		.topnav a {
 		  float: left;
@@ -83,6 +94,7 @@
              return  d;
          }).ticks(10));
 
+var tooltip = d3.select("body").append("div").attr("class", "toolTip");
 
           g.selectAll(".bar")
 		          .data(data)
