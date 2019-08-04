@@ -118,21 +118,21 @@ var path = d3.geoPath().projection(projection);
 svg.call(tip);
 
 var data1 = [];
-d3.tsv("/data/world_population.tsv").then( function(data) {
-    data1 = data
+d3.tsv("/data/world_population.tsv").then( function(d) {
+    data1 = d
 });
 
-var json1 ;
-d3.json("/data/world_countries.json").then( function(data) {
+var json1 = [];
+d3.json("/data/world_countries.json").then( function(d) {
 	console.log('test');
-    console.log(data);
-    json1 = data;
+    console.log(d);
+    json1 = d;
 });
 
 
-ready1(json1,data1);
 
-function ready1( data, population) {
+
+
   var populationById = {};
   alert(data);
   alert(population);
@@ -174,7 +174,7 @@ function ready1( data, population) {
        // .datum(topojson.mesh(data.features, function(a, b) { return a !== b; }))
       .attr("class", "names")
       .attr("d", path);
-}
+
 
 </script>
 </body>
