@@ -124,7 +124,7 @@ queue()
 
 function ready(error, data, population) {
   var populationById = {};
-
+  alert(data);
   population.forEach(function(d) { populationById[d.id] = +d.population; });
   data.features.forEach(function(d) { d.population = populationById[d.id] });
 
