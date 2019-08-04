@@ -182,6 +182,19 @@ svg.selectAll(".bar")
 }).catch(e => {
     console.log(e);
 });
+
+var links=document.getElementsByTagName('a'), hrefs = [];
+
+
+// Loop through the buttons and add the active class to the current/clicked button
+for (var i = 0; i < links.length; i++) {
+  links[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace("active", "");
+    this.className += "active";
+  });
+}
+
 </script>
 <div align="left">
 <b>As you can see Females have a higher life expectenacy than males.Also as the income grows , Life Expectenancy  also increases.</b>
