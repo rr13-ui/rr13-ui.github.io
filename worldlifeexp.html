@@ -117,21 +117,28 @@ var path = d3.geoPath().projection(projection);
 
 svg.call(tip);
 
+var data1 = [];
 d3.tsv("/data/world_population.tsv").then( function(data) {
+    data1 = data
 	data.forEach(function(d) {
         console.log(d.name);
         console.log(d.id);
     });
 });
 
-queue()
-    .defer(d3.json, "/data/world_countries.json")
-    .defer(d3.tsv, "/data/world_population.tsv")
-    .await(ready);
+var json1 ;
+d3.json("world_countries.json").then( function(data) {
+    json1 = data
+});
 
-function ready(error, data, population) {
+
+
+ready(data1,json1);
+
+function ready( data, population) {
   var populationById = {};
   alert(data);
+  alert(population);
   population.forEach(function(d) { populationById[d.id] = +d.population; });
   data.features.forEach(function(d) { d.population = populationById[d.id] });
 
