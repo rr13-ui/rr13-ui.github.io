@@ -49,7 +49,7 @@
 		          .attr("x", function(d) { return xScale(d.pctile); })
 		          .attr("y", function(d) { return yScale(d.le_agg); })
 		          .attr("width", xScale.bandwidth())
-		          .attr("height", function(d) { return height - yScale(d.value); });
+		          .attr("height", function(d) { return height - yScale(d.le_agg); });
 
 
 }).catch(e => {
