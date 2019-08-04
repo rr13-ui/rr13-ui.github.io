@@ -19,10 +19,8 @@
     var g = svg.append("g")
                .attr("transform", "translate(" + 100 + "," + 100 + ")");
 
-    d3.csv("/data/lifeexp.csv").then( function(error, data) {
-        if (error) {
-            throw error;
-        }
+    d3.csv("/data/lifeexp.csv").then( function(data) {
+
 
         xScale.domain(data.map(function(d) { return d.pctile; }));
         yScale.domain([0, d3.max(data, function(d) { return d.le_agg; })]);
