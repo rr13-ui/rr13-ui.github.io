@@ -120,13 +120,13 @@ svg.call(tip);
 var data1 = [];
 d3.tsv("/data/world_population.tsv").then( function(data) {
     data1 = data
-	data.forEach(function(d) {
-        console.log(d.name);
-        console.log(d.id);
-    });
 });
 
 var json1 ;
+d3.json("/data/world_countries.json", function(data) {
+    console.log(data);
+});
+
 d3.json("/data/world_countries.json", function(data) {
     alert('1' + data);
     json1 = data
