@@ -117,7 +117,7 @@ var path = d3.geoPath().projection(projection);
 
 svg.call(tip);
 
-d3.tsv("world_population.tsv", function(data) {
+d3.tsv("/data/world_population.tsv", function(data) {
     for (var i = 0; i < data.length; i++) {
         console.log(data[i].name);
         console.log(data[i].id);
