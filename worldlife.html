@@ -94,22 +94,22 @@
 		          .attr("height", function(d) { return height - yScale(d.le_agg); });
 
 
-		// text label for the y axis
-		  svg.append("text")
-		      .attr("transform", "rotate(-90)")
-		      .attr("y", 0 - margin.left)
-		      .attr("x",0 - (height / 2))
-		      .attr("dy", "1em")
-		      .style("text-anchor", "middle")
-      .text("Life Expectenacy");
+		svg.append("text")
+		    .attr("class", "x label")
+		    .attr("text-anchor", "end")
+		    .attr("x", width)
+		    .attr("y", height - 6)
+    .text("income per cent");
 
-      // text label for the x axis
-	    svg.append("text")
-	        .attr("transform",
-	              "translate(" + (width/2) + " ," +
-	                             (height + margin.top + 20) + ")")
-	        .style("text-anchor", "middle")
-      .text("Percent Income");
+    svg.append("text")
+	    .attr("class", "y label")
+	    .attr("text-anchor", "end")
+	    .attr("y", 6)
+	    .attr("dy", ".75em")
+	    .attr("transform", "rotate(-90)")
+    .text("life expectancy (years)");
+
+
 
 }).catch(e => {
     console.log(e);
