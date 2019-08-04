@@ -109,6 +109,21 @@
 	    .attr("transform", "rotate(-90)")
     .text("life expectancy");
 
+var bars = svg.selectAll(".bar")
+        .data(data)
+        .enter()
+        .append("rect")
+        .attr("class", "bar");
+
+ bars.on("mouseover", function() {
+            d3.select(this)
+            	.attr("fill", "red");
+        })
+        .on("mouseout", function(d, i) {
+            d3.select(this).attr("fill", function() {
+                return "" + color(this.id) + "";
+            });
+        });
 
 
 }).catch(e => {
