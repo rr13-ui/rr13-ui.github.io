@@ -98,12 +98,13 @@
 		    .attr("class", "x label")
 		    .attr("text-anchor", "end")
 		    .attr("x", width)
-		    .attr("y", height +50)
+		    .attr("y", height +70)
     .text("income per cent");
 
     svg.append("text")
 	    .attr("class", "y label")
 	    .attr("text-anchor", "end")
+	    .attr("x", 20)
 	    .attr("y", 20)
 	    .attr("transform", "rotate(-90)")
     .text("life expectancy");
@@ -114,5 +115,8 @@
     console.log(e);
 });
 </script>
+
+AS you can see Females have a higher life expectenacy than males. Also as the income grows , it also increases.
 </div>
+
 </body>
