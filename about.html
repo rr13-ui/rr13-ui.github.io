@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+<style>
+        .bar {
+            fill: steelblue;
+        }
+        .bar:hover {
+		  fill: orangered ;
+		}
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+        /* Add a black background color to the top navigation */
+		.topnav {
+		  background-color: #333;
+		  overflow: hidden;
+		}
+
+		.toolTip {
+		  position: absolute;
+		  display: none;
+		  min-width: 80px;
+		  height: auto;
+		  background: none repeat scroll 0 0 #ffffff;
+		  border: 1px solid #6F257F;
+		  padding: 14px;
+		  text-align: center;
+		}
+
+		/* Style the links inside the navigation bar */
+		.topnav a {
+		  float: left;
+		  color: #f2f2f2;
+		  text-align: center;
+		  padding: 14px 16px;
+		  text-decoration: none;
+		  font-size: 17px;
+		}
+
+		/* Change the color of links on hover */
+		.topnav a:hover {
+		  background-color: #ddd;
+		  color: black;
+		}
+
+		/* Add a color to the active/current link */
+		.topnav a.active {
+		  background-color: #4CAF50;
+		  color: white;
+		}
+
+    </style>
+  </head>
+
+  <body>
+    <h1>Life Expectenancy Analysis</h1>
+    <a  href="index.html">Life Expectenancy for Female</a>
+	  <a  href="worldlife.html">Life Expetenancy For Men</a>
+	  <a class="active" href="about.html">About</a>
+
+	<div class="gallery">
+  <a target="_blank" href="house.jpg">
+    <img src="house.jpg" alt="Mountains" width="600" height="400">
+  </a>
+  </div>
+
+<p><b>About:</b>Life expectenacy factors can be analyzed by many factors. Have picked up couple of factors, to show the differeces. This project is based on hybrid interactive slide show.
+
+Each slide has similar template, fonts, bar graphs and tooltip to provide visual consistency on scene. Slides are in order to convey the message each slide has. For consistent annotations each slide has details and trends analysis in similar format. X and y Axis has been labeled clearly.
+<br></br>
+Parameters and triggers has been used in all slides. Upon mouseover any bar it changes its color to Orange and displays the value.When you moveout your mouse, color turns back to blue. Hyperlinks and pagination will let the user move to different slides. Also, at the bottom of the page solid color on the page bar will let user know which page they are in. All the slide has back to home link along with the links to navigate to other pages
+<br></br>
+</div>
+	</p>
+
+  </body>
+
+<script>
+	var links=document.getElementsByTagName('a'), hrefs = [];
+
+
+	// Loop through the buttons and add the active class to the current/clicked button
+	for (var i = 0; i < links.length; i++) {
+	  links[i].addEventListener("click", function() {
+	    var current = document.getElementsByClassName("active");
+	    current[0].className = current[0].className.replace("active", "");
+	    this.className += "active";
+	  });
+}
+</script>
+</html>
