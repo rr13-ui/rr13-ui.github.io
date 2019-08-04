@@ -118,15 +118,17 @@ var path = d3.geoPath().projection(projection);
 svg.call(tip);
 
 var data = [];
+var population = [];
+
 d3.tsv("/data/world_population.tsv").then( function(d) {
-    data = d
+    population = d
 });
 
-var population = [];
+
 d3.json("/data/world_countries.json").then( function(d) {
 	console.log('test');
     console.log(d);
-    population = d;
+    data = d;
 });
 
 
