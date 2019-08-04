@@ -15,6 +15,35 @@
 		  fill: orangered ;
 		}
 
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
         /* Add a black background color to the top navigation */
 		.topnav {
 		  background-color: #333;
@@ -74,6 +103,14 @@
 var colours = d3.scaleOrdinal()
     .range(["#6F257F", "#CA0D59"]);
 
+var tip = d3.tip()
+  .attr('class', 'd3-tip')
+  .offset([-10, 0])
+  .html(function(d) {
+    return "<strong>Frequency:</strong> <span style='color:red'>" + d.le_agg + "</span>";
+  })
+
+
 var color = d3.scaleOrdinal(d3.schemeCategory10);
 
 
@@ -114,21 +151,8 @@ var tooltip = d3.select("body").append("div").attr("class", "toolTip");
 		          .attr("y", function(d) { return yScale(d.le_agg); })
 		          .attr("width", xScale.bandwidth())
 		          .attr("height", function(d) { return height - yScale(d.le_agg); })
-		          .on("mouseover", function() {
-				              d3.select(this)
-				              	.attr("fill", "red");
-				          })
-				  .on("mouseout", function(d, i) {
-				              d3.select(this)
-				              	.attr("fill", "blue");
-				          })
-				  .on("mousemove", function(d){
-				              tooltip
-				                .style("left", d3.event.pageX - 50 + "px")
-				                .style("top", d3.event.pageY - 70 + "px")
-				                .style("display", "inline-block")
-				                .html((d.area) + "<br>" + "Avg Life Exp. Rate " + (d.le_agg));
-				          });
+		          .on('mouseover', tip.show)
+      			  .on('mouseout', tip.hide);
 
 
 
