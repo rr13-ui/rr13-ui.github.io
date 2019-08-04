@@ -63,10 +63,18 @@
 		  svg.append("text")
 		      .attr("transform", "rotate(-90)")
 		      .attr("y", 0 - margin.left+40)
-		      .attr("x",0 - (height / 2))
+		      .attr("x",0 - (height / 2)-70)
 		      .attr("dy", "1em")
 		      .style("text-anchor", "middle")
-      .text("Value");
+      .text("Life Expectenacy");
+
+      // text label for the x axis
+	    svg.append("text")
+	        .attr("transform",
+	              "translate(" + (width/2) + " ," +
+	                             (height + margin.top + 20) + ")")
+	        .style("text-anchor", "middle")
+      .text("Percent Income");
 
 }).catch(e => {
     console.log(e);
