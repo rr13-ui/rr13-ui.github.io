@@ -57,9 +57,9 @@
 
 	function tooltipHtml(n, d){	/* function to create html content string in tooltip div. */
 		return "<h4>"+n+"</h4><table>"+
-			"<tr><td>Low</td><td>"+(d.low)+"</td></tr>"+
-			"<tr><td>Average</td><td>"+(d.avg)+"</td></tr>"+
-			"<tr><td>High</td><td>"+(d.high)+"</td></tr>"+
+			"<tr><td>Female Race Adjusted</td><td>"+(d.femaleraceadj)+"</td></tr>"+
+			"<tr><td>Female Race UnAdjusted</td><td>"+(d.femaleraceunadj)+"</td></tr>"+
+			"<tr><td>Male Race Adjusted</td><td>"+(d.maleraceadj)+"</td></tr>"+
 			"</table>";
 	}
 
@@ -69,20 +69,16 @@
 	    data = d
 	});
 
-
 	var sampleData ={};	/* Sample random data. */
-	["HI", "AK", "FL", "SC", "GA", "AL", "NC", "TN", "RI", "CT", "MA",
-	"ME", "NH", "VT", "NY", "NJ", "PA", "DE", "MD", "WV", "KY", "OH",
-	"MI", "WY", "MT", "ID", "WA", "DC", "TX", "CA", "AZ", "NV", "UT",
-	"CO", "NM", "OR", "ND", "SD", "NE", "IA", "MS", "IN", "IL", "MN",
-	"WI", "MO", "AR", "OK", "KS", "LS", "VA"]
-		.forEach(function(d){
-			var low=Math.round(100*Math.random()),
-				mid=Math.round(100*Math.random()),
-				high=Math.round(100*Math.random());
-			sampleData[d]={low:d3.min([low,mid,high]), high:d3.max([low,mid,high]),
-					avg:Math.round((low+mid+high)/3), color:d3.interpolate("#ffffcc", "#800026")(low/100)};
-		});
+
+    data.forEach(
+    	function(d){
+			 sampleData[d.stateabbrv]={femaleraceadj:d.le_raceadj_q1_F, femaleraceunadj:d.le_agg_q1_F,
+					maleraceadj:d.le_raceadj_q1_M, color:d3.interpolate("#ffffcc", "#800026")(femaleraceadj/100)};
+    	}
+    );
+
+
 
 	/* draw states on id #statesvg */
 	uStates.draw("#statesvg", sampleData, tooltipHtml);
