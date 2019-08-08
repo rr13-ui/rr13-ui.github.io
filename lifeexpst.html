@@ -111,6 +111,7 @@
 		    	function(d){
 					 sampleData[d.stateabbrv]={femaleraceadj:d.le_raceadj_q1_F, femaleraceunadj:d.le_agg_q1_F,
 							maleraceadj:d.le_raceadj_q1_M, color:d3.interpolate("#ffffcc", "#800026")(((d.le_raceadj_q1_F-80)*3.22)/100)};
+					 console.log((((d.le_raceadj_q1_F-80)*3.22)/100));
 		    	}
 		    );
 			/* draw states on id #statesvg */
