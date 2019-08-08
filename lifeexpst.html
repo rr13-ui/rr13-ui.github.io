@@ -52,7 +52,7 @@
 <div id="tooltip"></div><!-- div to hold tooltip. -->
 <svg width="960" height="600" id="statesvg"></svg> <!-- svg to hold the map. -->
 <script src="uStates.js"></script> <!-- creates uStates. -->
-<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 
 	function tooltipHtml(n, d){	/* function to create html content string in tooltip div. */
@@ -65,7 +65,7 @@
 
 	var data = [];
 
-	d3.csv("/data/lifeexpstate.csv").then( function(d) {
+	d3.csv("/data/lifeexpstate.csv"),function(d) {
 	    data = d
 	});
 
