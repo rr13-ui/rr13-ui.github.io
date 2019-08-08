@@ -74,7 +74,7 @@
     data.forEach(
     	function(d){
 			 sampleData[d.stateabbrv]={femaleraceadj:d.le_raceadj_q1_F, femaleraceunadj:d.le_agg_q1_F,
-					maleraceadj:d.le_raceadj_q1_M, color:d3.interpolate("#ffffcc", "#800026")(d.le_raceadj_q1_F/100)};
+					maleraceadj:d.le_raceadj_q1_M, color:d3.interpolate("#ffffcc", "#800026")(d.le_raceadj_q1_F)};
     	}
     );
 
@@ -82,7 +82,7 @@
 
 	/* draw states on id #statesvg */
 	uStates.draw("#statesvg", sampleData, tooltipHtml);
-
+	console.log('test');
 	d3.select(self.frameElement).style("height", "600px");
 </script>
 
