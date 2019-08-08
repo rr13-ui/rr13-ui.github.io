@@ -82,8 +82,8 @@
 <div class="topnav">
   <a href="index.html">Life Expectancy  for Female</a>
   <a  href="worldlife.html">Life Expectancy  For Men</a>
-  <a  href="lifeexpst.html">Life Expectancy  By State</a>
-  <a class="active"  href="about.html">About</a>
+  <a class="active"  href="lifeexpst.html">Life Expectancy  By State</a>
+  <a  href="about.html">About</a>
 </div>
 
 <div id="tooltip"></div><!-- div to hold tooltip. -->
@@ -110,7 +110,7 @@
 		    data.forEach(
 		    	function(d){
 					 sampleData[d.stateabbrv]={femaleraceadj:d.le_raceadj_q1_F, femaleraceunadj:d.le_agg_q1_F,
-							maleraceadj:d.le_raceadj_q1_M, color:d3.interpolate("#ffffcc", "#800026")(d.le_raceadj_q1_F)};
+							maleraceadj:d.le_raceadj_q1_M, color:d3.interpolate("#ffffcc", "#800026")(d.le_raceadj_q1_F/100)};
 		    	}
 		    );
 			/* draw states on id #statesvg */
