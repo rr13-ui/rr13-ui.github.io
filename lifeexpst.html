@@ -65,8 +65,8 @@
 
 	var data = [];
 
-	d3.csv("/data/lifeexpstate.csv"),function(d) {
-	    data = d
+	d3.csv("/data/lifeexpstate.csv",function(d) {
+	    data = d;
 	});
 
 	var sampleData ={};	/* Sample random data. */
